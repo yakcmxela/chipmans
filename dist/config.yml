@@ -1,0 +1,6 @@
+development:
+  password: efa6d59abd627e412bf93eda33b5708c
+  theme_id: "33593196633"
+  store: chipmanswharf.myshopify.com
+  ignore_files:
+  - config/settings_data.json

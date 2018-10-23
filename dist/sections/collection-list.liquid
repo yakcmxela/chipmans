@@ -1,0 +1,147 @@
+{%- comment -%}
+  This is a required section for the Shopify Theme Store.
+  It is available when you add "Collection list" section in the Theme Editor.
+
+  Theme Store required settings
+  - Heading: title of the collection list section
+  - Collection
+{%- endcomment -%}
+<section class="collection-list container">
+  {% if section.settings.title != blank %}
+    <h2 class="collection-list__title" style="text-align: {{ section.settings.heading_alignment }}">{{ section.settings.title | escape }}</h2>
+  {% endif %}
+
+  {% assign count = 0 %}
+  {% for block in section.blocks %}
+     {% assign count = count | plus: 1 %}
+  {% endfor %}
+  <div class="collection-list__collections flex-columns-{{ count }}">
+    {% for block in section.blocks %}
+      {%- assign collection = collections[block.settings.collection] -%}
+
+      <a href="{{ collection.url | default: "#" }}" class="collection-list__item flex-columns__item" {{ block.shopify_attributes }}>
+        {% if collection.image != blank or collection.products.first != blank %}
+          {%- assign image_object = collection.image | default: collection.products.first.featured_image -%}
+          <div class="collection-list__image">
+            {% include 'responsive-image' with
+              image: image_object,
+              max_width: 600,
+              max_height: 600
+            %}
+          </div>
+        {% elsif collection == empty %}
+          {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+          {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+        {% endif %}
+
+        {%- assign default_label = 'homepage.onboarding.collection_title' | t -%}
+        <h3 class="collection-list__item-title button__{{ block.settings.button_color }}">{{ collection.title | default: default_label }}</h3>
+        
+      </a>
+    {% endfor %}
+  </div>
+
+  {% if section.blocks.size == 0 %}
+    {% include 'no-blocks' %}
+  {% endif %}
+</section>
+
+{% schema %}
+  {
+    "name": "Collection list",
+    "max_blocks": 12,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      },
+      {
+        "type": "select",
+        "id": "heading_alignment",
+        "label": "Heading Alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "label": "Collection",
+            "id": "collection",
+            "type": "collection"
+          },
+          {
+            "label": "Button Color",
+            "type": "select",
+            "id": "button_color",
+            "options": [
+              {
+                "value": "main",
+                "label": "Main"
+              },
+              {
+                "value": "main-dark",
+                "label": "Main (dark)"
+              },
+              {
+                "value": "main-light",
+                "label": "Main (light)"
+              },
+              {
+                "value": "accent",
+                "label": "Accent"
+              },
+              {
+                "value": "accent-dark",
+                "label": "Accent (dark)"
+              },
+              {
+                "value": "accent-light",
+                "label": "Accent (light)"
+              },
+              {
+                "value": "white",
+                "label": "White"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection list",
+        "category": "Collection",
+        "blocks": [
+          {
+            "type": "collection"
+          },
+          {
+            "type": "collection"
+          },
+          {
+            "type": "collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

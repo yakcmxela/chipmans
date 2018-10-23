@@ -1,0 +1,24 @@
+#CartSpecialInstructions {
+	display: inherit;
+	width: 100%;
+	margin: 12px auto 42px 0;
+}
+
+.template-cart {
+	h1 {
+		text-align: left;
+	}
+	form {
+		padding-bottom: 12rem;
+		text-align: left;
+	}
+	
+	.subtotal {
+		margin-top: 0;
+		font-family: $font-heading;
+		font-size: 2.5rem;
+	}
+	.font__co-table {
+		padding: 0;
+	}
+}

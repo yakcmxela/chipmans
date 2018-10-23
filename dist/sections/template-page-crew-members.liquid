@@ -1,0 +1,220 @@
+<section class="crew-members" data-section-type="crew-members">
+	<div class="crew-members__intro">
+		{% if section.settings.heading %}
+			<h2>{{ section.settings.heading }}</h2>
+		{% endif %}
+		{% if section.settings.caption %}
+			{{ section.settings.caption }}
+		{% endif %}
+	</div>
+	<div class="crew-members__container">
+		{% for block in section.blocks %}
+			<div class="crew-members__member" id="{{ block.settings.boat_name | handleize }}">
+				{% include 'buoy-variables' %}
+				<div class="crew-members__member-info">
+					<div class="crew-members__member-name">
+						{%- assign buoy = block.settings.buoy -%}
+						<div class="crew-members__member-buoy">
+							{% include buoy %}
+						</div>
+						<div class="crew-members__member-title">
+							{% if block.settings.boat_name != blank %}
+								<h2>{{ block.settings.boat_name }}</h2>
+							{% endif %}
+							{% if block.settings.crew_name != blank %}
+								<h3>{{ block.settings.crew_name }}</h3>
+							{% endif %}
+						</div>
+					</div>
+					{% if block.settings.description != blank %}
+						{{ block.settings.description }}
+					{% endif %}
+					<div class="crew-members__member-catch">
+						{%- assign catches = 'lobster, crab, scallop' | split: ', ' -%}
+						{%- assign is_fishing = false -%}
+						{% for catch in catches %}
+							{%- assign type = catch | handleize -%}
+							{% if block.settings[type] == true %}
+								{%- assign is_fishing = true -%}
+							{% endif %}
+						{% endfor %}
+						{% if is_fishing == true %}
+							<h4>Shop {{ block.settings.crew_name }}'s catch:</h4>
+							{% for catch in catches %}
+								{%- assign type = catch | handleize -%}
+								{% capture icon %}icon-{{ type }}{% endcapture %}
+								{% capture product_link %}{{ type }}_url{% endcapture %}
+								{% if block.settings[type] == true %}
+									<a href="{{ section.settings[product_link] }}">
+										{% include icon %}
+									</a>
+								{% endif %}
+							{% endfor %}
+						{% endif %}
+					</div>
+				</div>
+				<div class="crew-members__member-images">
+					{% if block.settings.crew_image != blank %}
+						<div class="crew-members__member-image">
+							<img src="{{ block.settings.crew_image | img_url: 'master' }}">
+						</div>
+					{% else %}
+						<div class="crew-members__member-not-pictured">
+							{% include 'icon-not_pictured' %}
+						</div>
+					{% endif %}
+					{% if block.settings.boat_image != blank %}
+						<div class="crew-members__member-image">
+							<img src="{{ block.settings.boat_image | img_url: 'master' }}">
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</section>
+{% schema %}
+	{
+		"name": "Our Crew",
+		"settings": [
+			{
+				"type": "text",
+				"id": "heading",
+				"label": "Heading"
+			},
+			{
+				"type": "richtext",
+				"id": "caption",
+				"label": "Caption"
+			},
+			{
+				"type": "url",
+				"id": "crab_url",
+				"label": "Link for crabs"
+			},
+			{
+				"type": "url",
+				"id": "lobster_url",
+				"label": "Link for lobster"
+			},
+			{
+				"type": "url",
+				"id": "scallop_url",
+				"label": "Link for scallops"
+			}
+		],
+		"blocks": [
+			{
+				"name": "Crew Member",
+				"type": "crew_member",
+				"settings": [
+					{
+						"type": "image_picker",
+						"id": "crew_image",
+						"label": "Photo"
+					},
+					{
+						"type": "checkbox",
+						"id": "lobster",
+						"label": "Fresh Caught Lobster"
+					},
+					{
+						"type": "checkbox",
+						"id": "crab",
+						"label": "Fresh Caught Crabs"
+					},
+					{
+						"type": "checkbox",
+						"id": "scallop",
+						"label": "Fresh Caught Scallops"
+					},
+					{
+						"type": "text",
+						"id": "crew_name",
+						"label": "Name"
+					},
+					{
+						"type": "text",
+						"id": "boat_name",
+						"label": "Name of Boat"
+					},
+					{
+						"type": "image_picker",
+						"id": "boat_image",
+						"label": "Image of Boat"
+					},
+					{
+						"type": "richtext",
+						"id": "description",
+						"label": "Short Description"
+					},
+					{
+						"type": "select",
+						"id": "buoy",
+						"label": "Buoy Style",
+						"options": [
+							{
+								"value": "buoy-horizontal",
+								"label": "Horizontal stripes"
+							},
+							{
+								"value": "buoy-vertical",
+								"label": "Vertical stripes"
+							}
+						]
+					},
+					{
+						"type": "color",
+						"id": "buoy__h-1",
+						"label": "1st (Spindle)"
+					},
+					{
+						"type": "color",
+						"id": "buoy__h-2",
+						"label": "2nd"
+					},
+					{
+						"type": "color",
+						"id": "buoy__h-3",
+						"label": "3rd"
+					},
+					{
+						"type": "color",
+						"id": "buoy__h-4",
+						"label": "4th"
+					},
+					{
+						"type": "color",
+						"id": "buoy__h-5",
+						"label": "5th"
+					},
+					{
+						"type": "color",
+						"id": "buoy__h-6",
+						"label": "6th"
+					},
+					{
+						"type": "color",
+						"id": "buoy__h-7",
+						"label": "7th"
+					},
+					{
+						"type": "color",
+						"id": "buoy__h-8",
+						"label": "6th"
+					},
+					{
+						"type": "color",
+						"id": "buoy__h-9",
+						"label": "7th"
+					},
+					{
+						"type": "color",
+						"id": "buoy__h-10",
+						"label": "8th"
+					}
+				]
+			}
+		]
+	}
+{% endschema %}

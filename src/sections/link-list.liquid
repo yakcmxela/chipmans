@@ -1,0 +1,142 @@
+<section class="link-list container">
+	{% if section.settings.title != blank %}
+		<h2 class="link-list__title" style="text-align: {{ section.settings.heading_alignment }}">{{ section.settings.title | escape }}</h2>
+	{% endif %}
+
+	{% assign count = 0 %}
+	{% for block in section.blocks %}
+		 {% assign count = count | plus: 1 %}
+	{% endfor %}
+	<div class="link-list__links flex-columns-{{ count }}">
+		{% for block in section.blocks %}
+			{% assign obj = blank %}
+			{% assign obj_img = blank %}
+			{% assign obj_title = blank %}
+			{% if block.settings.page != blank %}
+				{% assign obj = pages[block.settings.page] %}
+				{% assign obj_img =  block.settings.page_image %}
+				{% assign obj_title =  block.settings.page_title %}
+			{% elsif block.settings.blog != blank %}
+				{% assign obj = blogs[block.settings.blog] %}
+				{% assign obj_img =  block.settings.blog_image %}
+				{% assign obj_title =  block.settings.blog_title %}
+			{% endif %}
+			<a href="{{ obj.url | default: "#" }}" class="link-list__item flex-columns__item" {{ block.shopify_attributes }}>
+				{% if obj_img != empty %}
+					<div class="link-list__image">
+						{% include 'responsive-image' with
+						   image: obj_img,
+						   max_width: 600,
+						   max_height: 600,
+						%}
+					</div>
+				{% endif %}
+				{% if obj_title != blank %}
+					<h3 class="link-list__item-title button__white">{{ obj_title | escape }}</h3>
+				{% else %}
+					<h3 class="link-list__item-title button__white">{{ obj.title | escape }}</h3>
+				{% endif %}
+			</a>
+		{% endfor %}
+	</div>
+</section>
+{% schema %}
+	{
+		"name": "Link List",
+		"max_blocks": 4,
+		"settings": [
+			{
+		        "type": "text",
+		        "id": "title",
+		        "label": "Heading",
+		        "default": "Link List"
+		      },
+		      {
+		        "type": "select",
+		        "id": "heading_alignment",
+		        "label": "Heading Alignment",
+		        "default": "center",
+		        "options": [
+		          {
+		            "value": "left",
+		            "label": "Left"
+		          },
+		          {
+		            "value": "center",
+		            "label": "Center"
+		          },
+		          {
+		            "value": "right",
+		            "label": "Right"
+		          }
+		        ]
+		    }
+		],
+		"blocks": [
+			{
+				"type": "page",
+				"name": "Page",
+				"settings": [
+					{
+						"label": "Page",
+						"type": "page",
+						"id": "page"
+					},
+					{
+						"label": "Title",
+						"type": "text",
+						"id": "page_title",
+						"info": "Enter custom text here. Will default to page title if left empty."
+					},
+					{
+						"label": "Image",
+						"type": "image_picker",
+						"id": "page_image"
+					}
+				]
+			},
+			{
+				"type": "blog",
+				"name": "Blog",
+				"settings": [
+					{
+						"label": "Blog",
+						"type": "blog",
+						"id": "blog"
+					},
+					{
+						"label": "Title",
+						"type": "text",
+						"id": "blog_title",
+						"info": "Enter custom text here. Will default to blog title if left empty."
+					},
+					{
+						"label": "Image",
+						"type": "image_picker",
+						"id": "blog_image"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"name": "Link list",
+				"category": "Links",
+				"blocks": [
+					{
+						"type": "page"
+					},
+					{
+						"type": "page"
+					},
+					{
+						"type": "page"
+					},
+					{
+						"type": "page"
+					}
+				]
+			}
+		]
+	}
+{% endschema %}

@@ -1,0 +1,40 @@
+.link-list {
+
+}
+
+.link-list__links {
+  display: flex;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+.link-list__item {
+	position: relative;
+}
+
+.link-list__item-title {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 1rem;
+	font-size: 2rem;
+	margin: 0;
+	@include media-query($large-up) {
+  		font-size: 2.5rem;
+  	}
+}
+
+.link-list__image {
+  min-width: 100%;
+  .responsive-image__wrapper {
+  	max-width: none;
+  }
+}
+
+.link-list__title {
+  flex-basis: 100%;
+}
+
+

@@ -1,0 +1,128 @@
+.double-image-text {
+  display: flex;
+  //flex-wrap: wrap;
+  position: relative;
+  padding: calc(#{$spacing} * 2) 0;
+  &.row-reverse {
+    flex-direction: row-reverse;
+    .double-image-text__images {
+      justify-content: flex-end;
+      padding-left: $spacing;
+      padding-right: 0;
+      &:after {
+        left: 60%;
+      }
+    }
+    .double-image-text__image {
+      &:first-child {
+        margin: 10rem 2rem 0 0;
+      }
+      &:last-child {
+        margin: 0;
+      }
+    }
+    .double-image-text__accent-image {
+      right: initial;
+      left: -#{$spacing};
+    }
+  }
+  .button {
+    position: relative;
+    z-index: 2;
+  }
+  @include media-query($medium-down) {
+    flex-direction: column-reverse !important;
+    padding: 0;
+
+    .double-image-text__text,
+    .double-image-text__images {
+      width: 100%;
+      padding: 0 0 $spacing 0;
+      margin: 0 0 $spacing 0;
+       h2 {
+        align-self: center;
+        white-space: initial;
+        width: 100%;
+      }
+    }
+    .double-image-text__images {
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      padding: $spacing 0;
+      margin: $spacing 0;
+    }
+  }
+}
+
+.double-image-text__full-bg {
+  background-color: $brand-grey-lt;
+  padding: $spacing 0;
+}
+
+.double-image-text__images {
+	display: flex;
+ 	width: 66%;
+  align-items: center;
+ 	padding-right: $spacing;
+ 	position: relative;
+ 	z-index: 2;
+ 	&:after {
+ 		content: '';
+ 		width: 75%;
+ 		height: 85%;
+ 		background-color: $brand-grey-lt;
+ 		position: absolute;
+ 		left: 50%;
+ 		top: 50%;
+ 		transform: translate(-55%, -50%) rotate(-5deg);
+ 		z-index: -1;
+ 	}
+}
+
+.double-image-text__image {
+  width: 45%;
+  transform: translateY(calc(-#{$spacing} * 3));
+	img {
+    width: 100%;
+		box-shadow: -2px 0px 5px rgba(0, 0, 0, .15);
+    border: 6px solid #FFF;
+	}
+	&:last-child {
+		margin-left: $spacing;
+    transform: translateY(calc(#{$spacing} * 3));
+	}
+}
+
+.double-image-text__text {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  h2 {
+    //text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: 1.25;
+    text-align: center;
+    background-color: $color-main;
+    border-radius: 6px;
+    padding: $spacing;
+    font-size: 36px;
+    color: #FFF;
+    font-style: italic;
+    white-space: pre;
+  }
+  h3 {
+    font-size: 26px;
+  }
+  h2, h3, p {
+  	margin: $spacing 0;
+  }
+}
+
+.double-image-text__accent-image {
+	position: absolute;
+	bottom: -#{$spacing};
+	right: -#{$spacing};
+}

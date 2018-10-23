@@ -1,0 +1,91 @@
+.btn,
+.button,
+.button__main,
+.button__accent,
+.button__main-dark,
+.button__accent-dark,
+.button__main-light,
+.button__accent-light,
+.button__white {
+  display: inline-block;
+  vertical-align: middle;
+  width: auto;
+  border: 0;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 24px;
+  user-select: none;
+  appearance: none;
+  color: #FFF;
+  padding: 1rem;
+  box-shadow: 0px 4px 7px rgba(0,0,0,.1);
+  transition: all .15s ease-in-out;
+  font-family: $font-heading;
+  letter-spacing: 3px;
+  border-radius: 4px;
+  &:hover {
+    box-shadow: 0px 4px 10px rgba(0,0,0,.1);
+    background-color: $color-body;
+  }
+}
+
+.btn,
+.button__main {
+  background-color: $color-main;
+  border: 2px solid $color-main;
+  &:hover {
+    color: $color-main;
+  }
+}
+
+.button__accent {
+  background-color: $color-accent;
+  border: 2px solid $color-accent;
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.button__main-dark {
+  background-color: $color-main-dark;
+  &:hover {
+    color: $color-main-dark;
+    border: 2px solid $color-main-dark;
+  }
+}
+
+.button__accent-dark {
+  background-color: $color-accent-dark;
+  &:hover {
+    color: $color-accent-dark;
+    border: 2px solid $color-accent-dark;
+  }
+}
+
+.button__main-light {
+  background-color: $color-main-light;
+  border: 2px solid $color-main-light;
+  &:hover {
+    color: $color-main-light;
+    border: 2px solid $color-main-light;
+  }
+}
+
+.button__accent-light {
+  background-color: $color-accent-light;
+  &:hover {
+    color: $color-accent-light;
+    border: 2px solid $color-accent-light;
+  }
+}
+
+.button__white {
+  background-color: #FFF;
+  color: $color-main;
+  &:hover {
+    color: #FFF;
+    background-color: $color-main;
+  }
+}

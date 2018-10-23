@@ -1,0 +1,50 @@
+#shopify-section-product {
+	.container {
+		margin: 64px auto;
+		@include media-query($small) {
+			margin: 18px auto;
+		}
+	}
+	h1 {
+		color: $color-main;
+	}
+}
+.product-single__thumbnail-image {
+  border: 2px solid transparent;
+
+  .active-thumbnail & {
+    border-color: $color-border;
+  }
+}
+.product__container {
+	display: flex; 
+	justify-content: space-between;
+	.button {
+		margin: 24px 0;
+	}
+	@include media-query($small) {
+		flex-direction: column;
+	}
+}
+.product__image {
+	width: 50%;
+	@include media-query($small) {
+		width: 100%;
+	}
+}
+.product__content {
+	width: 50%;
+	padding-left: 42px;
+	@include media-query($small) {
+		width: 100%;
+		padding: 0;
+	}
+}
+.product__gallery-image-icons {
+	display: flex;
+	list-style: none;
+	padding: 0;
+	li {
+		width: 25%;
+	}
+}

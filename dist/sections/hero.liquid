@@ -1,0 +1,95 @@
+<section class="hero" style="background-image: url({{ section.settings.hero_image | img_url: '1600x1060' }}); height: {{ section.settings.height }}vh;">
+	<div class="hero__content flex-container flex-container__{{ section.settings.vertical_alignment }}--{{ section.settings.horizontal_alignment }}">
+		{% if section.settings.heading != blank %}
+			<h1 class="hero__heading">{{ section.settings.heading }}</h1>
+		{% endif %} 
+		{% if section.settings.link_to != blank %}
+			{% if section.settings.link_text %}
+				{%- assign link_text = section.settings.link_text %}
+			{% else %}
+				{%- assign link_text = section.settings.collection.title -%}
+			{% endif %}
+			<a class="hero__link" href="{{ section.settings.link_to }}">{{ link_text }}</a>
+		{% endif %}
+	</div>
+</section>
+
+{% schema %}
+  {
+    "name": "Hero",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "url",
+        "id": "link_to",
+        "label": "Link To"
+      },
+      {
+        "type": "text",
+        "id": "link_text",
+        "label": "Link Text"
+      },
+      {
+        "type": "image_picker",
+        "id": "hero_image",
+        "label": "Image"
+      },
+      {
+      	"type": "range",
+      	"id": "height",
+      	"label": "Vertical Height",
+      	"default": 72,
+      	"min": 0,
+      	"max": 100
+      },
+      {
+        "type": "select",
+        "id": "vertical_alignment",
+        "label": "Vertical Alignment",
+        "options": [
+          {
+            "value": "start",
+            "label": "Start"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "end",
+            "label": "End"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "horizontal_alignment",
+        "label": "Horizontal Alignment",
+        "options": [
+	     {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+	   ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero",
+        "category": "Feature"
+      }
+    ]
+  }
+{% endschema %}

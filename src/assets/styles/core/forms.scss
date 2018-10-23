@@ -1,0 +1,78 @@
+form {
+  margin: 0;
+}
+
+a,
+area,
+button,
+[role='button'],
+input,
+label,
+select,
+summary,
+textarea {
+  touch-action: manipulation;
+}
+
+label {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  &.label_checkbox {
+    position: relative;
+    display: block;
+    opacity: 1;
+    z-index: 1;
+  }
+}
+
+select {
+  height: 42px;
+}
+
+input,
+textarea,
+select {
+  font-size: 16px;
+  max-width: 100%;
+  border: 1px solid $color-border;
+  border-radius: 6px;
+  background-color: rgba(0,0,0,.05);
+  border: 0px;
+  padding: 12px;
+  margin-bottom: 6px;
+  color: $color-body-text;
+  font-size: 1.4rem;
+
+  &[disabled] {
+    border-color: $color-disabled-border;
+    background-color: $color-disabled;
+    cursor: default;
+  }
+}
+
+button,
+input[type='submit'],
+label[for] {
+  cursor: pointer;
+}
+
+textarea {
+  min-height: 100px;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+// Force option color (affects IE only)
+option {
+  background-color: $color-body;
+  color: $color-body-text;
+}
+
+.input-error {
+  border-color: $color-error;
+  background-color: $color-error-bg;
+  color: $color-body-text;
+}

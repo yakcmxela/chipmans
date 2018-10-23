@@ -1,0 +1,25 @@
+<section class="page-banner" data-section-id="{{ section.id }}" data-section-type="page-banner" style="background-image: url({{ section.settings.image | img_url: 'master' }})">
+  {% if page.title != blank %}
+    <h1>{{ page.title }}</h1>
+  {% elsif collection.title != blank %}
+    <h1>{{ collection.title }}</h1>
+  {% endif %}
+</section>
+{% schema %}
+  {
+    "name": "Page Banner",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Banner Image"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Page Banner",
+        "category": "Page Features"
+      }
+    ]
+  }
+{% endschema %}

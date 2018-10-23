@@ -1,0 +1,29 @@
+.newsletter__signup {
+	text-align: center;
+	background-color: rgba(196, 196, 195, 0.1);
+	padding: 42px;
+	margin: 36px auto 18px auto;
+	p {
+		font-family: $font-heading;
+		font-size: 24px;
+		letter-spacing: 2px;
+		color: $color-main-light;
+	}
+	label {
+		opacity: 1;
+		position: relative;
+	}
+	input {
+		padding: 12px;
+		background-color: #FFF;
+		min-width: 300px;
+		margin: 0;
+	}
+	button {
+		background-color: $color-main;
+		color: #FFF;
+		padding: 12px;
+		margin: 0;
+		border: 0;
+	}
+}

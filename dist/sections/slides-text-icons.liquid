@@ -1,0 +1,128 @@
+<section class="slides-text-icons container" data-section-type="slides-text-icons" data-section-id="{{ section.id }}">
+	<div class="slides-text-icons__slides">
+		<div class="slides-text-icons__intro">
+			{% if section.settings.title != blank %}
+			    <h2 class="slides-text-icons__title">{{ section.settings.title | escape }}</h2>
+			{% endif %}
+			{% if section.settings.description != blank %}
+				<p>{{ section.settings.description }}</p>
+			{% endif %}
+		</div>
+		{% for block in section.blocks %}
+			<div class="slides-text-icons__slide">
+				{% assign icon = block.settings.icon %}
+				<div class="slides-text-icons__icon-container">
+					{% include icon %}
+				</div>
+				{% if block.settings.title != blank %}
+					<h3>{{ block.settings.title }}</h3>
+				{% endif %}
+				{% if block.settings.info != blank %}
+					<p>{{ block.settings.info }}</p>
+				{% endif %}
+			</div>
+		{% endfor %}
+		</div>
+</section>
+{% schema %}
+	{
+		"name": "Slide Icons with Text",
+   		"settings": [
+	      {
+	        "type": "text",
+	        "id": "title",
+	        "label": "Heading",
+	        "default": "Always Sustainable"
+	      },
+	      {
+	      	"type": "textarea",
+	      	"id": "description",
+	      	"label": "Section Description"
+	      },
+	      {
+	        "type": "select",
+	        "id": "alignment",
+	        "label": "Slide Alignment",
+	        "default": "row",
+	        "options": [
+	          {
+	            "value": "row",
+	            "label": "Left"
+	          },
+	          {
+	            "value": "row-reverse",
+	            "label": "Right"
+	          }
+	        ]
+	      }
+	    ],
+	    "blocks": [
+	      {
+	        "type": "slide",
+	        "name": "Slide",
+	        "settings": [
+	          {
+	            "label": "Image Icon",
+	            "id": "icon",
+	            "type": "select",
+	            "options": [
+		          {
+		            "value": "icon-trap",
+		            "label": "Trap"
+		          },
+		          {
+		            "value": "icon-v_notch",
+		            "label": "V-Notch"
+		          },
+		          {
+		            "value": "icon-measure",
+		            "label": "Measure"
+		          },
+		          {
+		            "value": "icon-apprentice",
+		            "label": "Apprentice"
+		          },
+		          {
+		            "value": "icon-seed",
+		            "label": "Seed Program"
+		          }
+		        ]
+	          },
+	          {
+	            "label": "Slide Title",
+	            "type": "text",
+	            "id": "title"
+	          },
+	          {
+	            "label": "Slide Info",
+	            "type": "textarea",
+	            "id": "info"
+	          }
+	        ]
+	      }
+	    ],
+	    "presets": [
+	      {
+	        "name": "Slide Icons with Text",
+	        "category": "Custom",
+	        "blocks": [
+	          {
+	            "type": "slide"
+	          },
+	          {
+	            "type": "slide"
+	          },
+	          {
+	            "type": "slide"
+	          },
+	          {
+	            "type": "slide"
+	          },
+	          {
+	            "type": "slide"
+	          }
+	        ]
+	      }
+	    ]
+	}
+{% endschema %}

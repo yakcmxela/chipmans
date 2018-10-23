@@ -1,0 +1,19 @@
+.container,
+.container__narrow {
+	margin: ($spacing * 1.5) auto;
+	width: 85%;
+
+	@media (max-width: 1024px) {
+		width: calc(100% - 80px);
+	}
+
+	@media (max-width: 650px) {
+		width: calc(100% - 30px);
+	}
+}
+.container {
+	max-width: $grid-max-width;
+}
+.container__narrow {
+	max-width: 700px;
+}

@@ -1,0 +1,105 @@
+.single-image-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+  padding: calc(#{$spacing} * 2) 0;
+  &.row-reverse {
+    flex-direction: row-reverse;
+    .single-image-text__image {
+      &:after {
+        content: '';
+        width: 90%;
+        height: 85%;
+        background-color: $brand-grey-lt;
+        position: absolute;
+        left: 0%;
+        right: initial;
+        top: 50%;
+        transform: translateY(-50%) rotate(5deg);
+        z-index: -1;
+      }
+    }
+  }
+  .button {
+    position: relative;
+    z-index: 2;
+  }
+  .button {
+    position: relative;
+    z-index: 2;
+  }
+  @include media-query($medium-down) {
+    flex-direction: column !important;
+    padding: 0;
+    h2 {
+      align-self: center;
+      white-space: initial;
+      width: 100%;
+    }
+    .single-image-text__content,
+    .single-image-text__image {
+      width: 100%;
+      padding: 0 0 $spacing 0;
+      margin: 0 0 $spacing 0;
+    }
+    .single-image-text__image {
+      padding: 0 0 $spacing 0;
+      margin: 0 0 $spacing 0;
+    }
+  }
+}
+
+.single-image-text__content {
+  width: 50%;
+  padding: calc(#{$spacing} * 2);
+  padding-left: 0;
+  margin: $spacing 0;
+  h2 {
+    letter-spacing: 3px;
+    line-height: 1.25;
+    text-align: center;
+    background-color: $color-main;
+    border-radius: 6px;
+    padding: $spacing;
+    font-size: 36px;
+    color: #FFF;
+    font-style: italic;
+    white-space: pre;
+  }
+  h3 {
+    font-size: 26px;
+  }
+  h2, h3, p {
+    margin: $spacing 0;
+  }
+}
+
+.single-image-text__icon {
+  margin-bottom: $spacing;
+  height: 84px;
+}
+
+.single-image-text__image {
+  width: 50%;
+  text-align: center;
+  position: relative;
+  &:after {
+    content: '';
+    width: 95%;
+    height: 85%;
+    background-color: $brand-grey-lt;
+    position: absolute;
+    right: 2.5%;
+    top: 50%;
+    transform: translateY(-50%) rotate(5deg);
+    z-index: -1;
+  }
+  img {
+    margin: auto;
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, .15);
+    //transform: rotate(4deg);
+    border: 6px solid #FFF;
+  }
+}

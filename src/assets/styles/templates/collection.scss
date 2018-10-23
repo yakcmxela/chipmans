@@ -1,0 +1,22 @@
+.template-collection {
+	h1 {
+		text-align: center;
+		font-weight: 400;
+		color: #FFF;
+	}
+	.container {
+		margin: 64px auto;
+		@include media-query($small) {
+			margin: 18px auto;
+		}
+	}
+}
+.collection__banner {
+	min-height: 250px;
+	background-size: cover;
+	background-position: center center;
+	display: flex;
+	justify-content: center center;
+	align-items: center center;
+	opacity: 1;
+}

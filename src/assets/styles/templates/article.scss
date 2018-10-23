@@ -1,0 +1,71 @@
+.giftcard-qr {
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.apple-wallet-image {
+  display: block;
+  margin: 0 auto;
+}
+
+@media print {
+  @page {
+    margin: 0.5cm;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .print-giftcard,
+  .apple-wallet {
+    display: none;
+  }
+}
+
+.template-article {
+  .container {
+    margin: 0 auto 42px auto;
+  }
+  svg {
+    path {
+      fill: $color-main;
+    }
+  }
+}
+
+.blog__article-meta {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  li {
+    font-family: $font-heading;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: $brand-grey-md;
+    &:first-of-type {
+      position: relative;
+      &:after {
+        content: '';
+        width: 150%;
+        height: $spacing;
+        background-color: $color-main-light;
+        position: absolute;
+        left: -#{$spacing};
+        top: 100%;
+        transform: translateY(-50%);
+        z-index: -1;
+      }
+    }
+    &:last-of-type {
+      margin-left: $spacing;
+      &:before {
+        content: '/';
+        margin-right: $spacing
+      }
+    }
+  }
+}

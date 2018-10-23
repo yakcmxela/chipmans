@@ -1,0 +1,49 @@
+.template-contact__form {
+	width: 500px;
+	text-align: center;
+	input,
+	textarea {
+		width: 100%;
+		margin-bottom: $spacing;
+	}
+	label {
+		position: absolute;
+		opacity: 0;
+		z-index: -1;
+	}
+	.button {
+		margin: $spacing 0 0 auto;
+		width: auto;
+		input {
+			padding: 0;
+			margin: 0;
+			font-family: $font-heading !important;
+			font-size: 24px;
+		  color: #FFF;
+		  letter-spacing: 3px;
+		}
+	}
+}
+
+.template-contact__faq-contact {
+	display: flex;
+	#shopify-section-template-contact-list-dropdowns,
+	.template-contact__form {
+		width: 50%;
+	}
+	.shopify-section {
+		padding-right: 32px;
+	}
+	h2 {
+		margin-top: 0;
+	}
+	@include media-query($small) {
+		flex-direction: column;
+		#shopify-section-template-contact-list-dropdowns,
+		.template-contact__form {
+			width: 100%;
+			margin-bottom: $spacing;
+			padding: 0 0 $spacing 0;
+		}
+	}
+}

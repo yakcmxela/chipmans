@@ -1,0 +1,68 @@
+.pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: $font-body;
+	.page {
+		display: block;
+		
+		a {
+			
+		}
+	}
+	.page a,
+	.current,
+	.next,
+	.prev {
+		background-color: $brand-grey-lt;
+		color: $color-main;
+		padding: $spacing;
+		display: block;
+		transition: all .15s linear;
+		&:hover {
+			color: $color-main-light;
+		}
+	}
+	.current {
+		position: relative;
+		color: $color-main-light;
+		&:after {
+			content: '';
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			background-color: $color-accent;
+			width: 50%;
+			height: 4px;
+			position: absolute;
+		}
+	}
+	.next {
+		position: relative;
+		color: #FFF;
+		&:after {
+			content: '';
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 1px;
+			height: 50%;
+			position: absolute;
+			background-color: $brand-grey-md;
+		}
+	}
+	.prev {
+		position: relative;
+		color: #FFF;
+		&:after {
+			content: '';
+			right: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 1px;
+			height: 50%;
+			position: absolute;
+			background-color: $brand-grey-md;
+		}
+	}
+}

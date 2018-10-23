@@ -1,0 +1,16 @@
+.featured-collection {
+  h2 {
+  	text-align: center;
+  	margin-top: calc(#{$spacing} * 4);
+  }
+  p {
+  	font-family: $font-heading;
+  	font-size: 24px;
+  	letter-spacing: 2px;
+  	color: $color-main-dark;
+  }
+ }
+
+.featured-collection_item {
+  text-align: center;
+}

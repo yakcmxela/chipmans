@@ -1,0 +1,37 @@
+.collection-list {
+
+}
+
+.collection-list__collections {
+  display: flex;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+.collection-list__item {
+	position: relative;
+}
+
+.collection-list__item-title {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-weight: 400;
+	letter-spacing: 1px;
+	padding: 1rem;
+	font-size: 24px;
+  letter-spacing: 2px;
+	margin: 0;
+}
+
+.collection-list__image {
+  min-width: 100%;
+}
+
+.collection-list__title {
+  flex-basis: 100%;
+}
+
+

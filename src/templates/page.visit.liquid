@@ -1,0 +1,10 @@
+{% section 'template-page-visit-banner' %}
+
+<div class="container">
+	{% if page.content != blank %}
+ 	 {{ page.content }}
+ 	{% endif %}
+ 	{% section 'template-page-visit-images-text' %}
+</div>
+
+{% section 'map' %}
