@@ -34,14 +34,14 @@ wheel.addEventListener('click', () => {
 	openNav();
 });
 
-logo.addEventListener('click', () => {
-	openNav();
-});
+// logo.addEventListener('click', () => {
+// 	openNav();
+// });
 
 overlay.addEventListener('click', () => {
 	openNav();
 })
 
-window.addEventListener('scroll', () => {
-	scrolled();
-});
+// window.addEventListener('scroll', () => {
+// 	scrolled();
+// });

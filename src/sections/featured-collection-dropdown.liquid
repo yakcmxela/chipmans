@@ -1,0 +1,190 @@
+<section data-section-id="{{ section.id }}" class="featured-collection-dropdown-container container" data-section-type="featured-collection-dropdown">
+  <div class="featured-collection-dropdown" style="background-image: url({{ section.settings.featured_image | img_url: 'master' }});">
+    <div class="featured-collection-dropdown__content">
+      <div class="featured-collection-dropdown__title">
+          <h2>{{ section.settings.heading }}</h2>
+          {% if section.settings.tagline != "" %}
+            <h3>{{ section.settings.tagline }}</h3> 
+          {% endif %}
+          {% if section.settings.paragraph != "" %}
+            {{ section.settings.paragraph }}
+          {% endif %}
+          {%- assign collection = collections[section.settings.collection] -%}
+      </div>
+      <div class="atc">
+        <div class="select-container">
+          <select class="atc-main">
+            {% for product in collection.products %}
+              <option value="{{ product.id }}">{{ product.title }}</option>
+            {% endfor %}
+          </select>
+          {% for product in collection.products %}
+            {% if forloop.first == true %} 
+              {% assign active = true %}
+            {% else %}
+              {% assign active = false %} 
+            {% endif %}
+            <div data-product-id="{{ product.id }}" class="select-options {% if active %}active{% endif %}">
+              <select class="atc-variants">
+              {% for variant in product.variants %}
+                <option 
+                  {% if should_hide %} 
+                    style="display: none;"
+                  {% endif %}
+                  {% if variant.available == false %}
+                    disabled 
+                  {% endif %}
+                  data-variant-price="{{ variant.price }}"
+                  data-variant-id="{{ variant.id }}"
+                  data-product-id="{{ product.id }}" 
+                  value="{{ variant.id }}">
+                  {{variant.title}} &mdash; {{ variant.price | money }}
+                </option> 
+              {% endfor %} 
+              </select>
+              <button class="atc-init button__white">
+                <span>Order Now</span>
+              </button>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+    {%- assign popup_collection = collections[section.settings.popup_collection] -%}
+  <div class="popup-options">
+    <div class="bg action-close"></div>
+    <div class="options">
+      <span class="close action-close">x</span> 
+      {% if section.settings.popup_text %}
+        <h4>{{ section.settings.popup_heading }}</h4>
+      {% endif %}
+      {% if section.settings.popup_text %}
+        <p>{{ section.settings.popup_text }}</p>
+      {% endif %}
+      {% for product in popup_collection.products %}
+        <div class="option">
+          <input 
+            class="extra-product" 
+            data-variant-id="{{product.variants[0].id}}"
+            value="1" 
+            type="number" 
+            min="1" 
+            name="{{product.title}}" 
+          />
+          <label for="{{product.title}}">{{product.title}}</label>
+          <button class="btn atc-extra-add">Add</button>
+        </div>
+      {% endfor %}
+      <div class="buttons">
+        <button class="btn action-close">Keep Shopping</button> 
+        <a href="/checkout" class="btn atc-continue">Continue to Checkout</a> 
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Collection as dropdown",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "tagline",
+        "label": "Product Tagline"
+      },
+      {
+        "type": "richtext",
+        "id": "paragraph",
+        "label": "Paragraph"
+      },
+      {
+        "type": "text",
+        "id": "popup_heading",
+        "label": "Popup Heading"
+      },
+      {
+        "type": "text",
+        "id": "popup_text",
+        "label": "Popup Text"
+      },
+      {
+        "type": "collection",
+        "id": "popup_collection",
+        "label": "Popup Collection"
+      },
+      {
+        "type": "text",
+        "id": "cta",
+        "label": "Call To Action"
+      },
+      {
+        "type": "range",
+        "id": "height",
+        "label": "Vertical Height",
+        "default": 72,
+        "min": 0,
+        "max": 100
+      },
+      {
+        "type": "image_picker",
+        "id": "featured_image",
+        "label": "Featured Image"
+      },
+      {
+        "type": "select",
+        "id": "vertical_alignment",
+        "label": "Vertical Alignment",
+        "options": [
+          {
+            "value": "start",
+            "label": "Start"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "end",
+            "label": "End"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "horizontal_alignment",
+        "label": "Horizontal Alignment",
+        "options": [
+          {
+            "value": "left", 
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+     ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection as dropdown",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

@@ -33,35 +33,14 @@
       {% include 'icon-bar' %}
       <div class="circle"></div>
     </div>
-    {% if template.name == 'index' %}
-      <h1>
-    {% else %}
-      <div class="h1">
-    {% endif %}
-        {% if section.settings.logo != blank %}
-          {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
-          <img id="header__logo" src="{{ section.settings.logo | img_url: '299x286' }}"
-              alt="{{ section.settings.logo.alt | default: shop.name }}">
-        {% else %}
-          {{ shop.name }}
-        {% endif %}
-    {% if template.name == 'index' %}
-      </h1>
-    {% else %}
-      </div>
-    {% endif %}
 
     <a id="cart-button" href="/cart">
-      {% if cart.item_count == 0 %}
-        <span>{% include 'icon-cart' %} Empty</span>
+      {% if cart.item_count < 2 %}
+        {% assign count_label = 'item' %}
       {% else %}
-        {% if cart.item_count < 2 %}
-          {% assign count_label = 'item' %}
-        {% else %}
-          {% assign count_label = 'items' %}
-        {% endif %}
-        <span class="cart-count">{% include 'icon-cart' %} {{ cart.item_count }} {{ count_label }}</span>
+        {% assign count_label = 'items' %}
       {% endif %}
+      <span class="cart-count" data-cart-count="{{ cart.item_count }}">{% include 'icon-cart' %} <span class="count">{{ cart.item_count }}</span> {{ count_label }}</span>
     </a>
 
     {% if shop.customer_accounts_enabled %}

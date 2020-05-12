@@ -1,7 +1,7 @@
 <section class="hero" style="background-image: url({{ section.settings.hero_image | img_url: '1600x1060' }}); height: {{ section.settings.height }}vh;">
 	<div class="hero__content flex-container flex-container__{{ section.settings.vertical_alignment }}--{{ section.settings.horizontal_alignment }}">
 		{% if section.settings.heading != blank %}
-			<h1 class="hero__heading">{{ section.settings.heading }}</h1>
+			<h1 class="hero__heading"><span>{{ section.settings.heading }}</span></h1>
 		{% endif %} 
 		{% if section.settings.link_to != blank %}
 			{% if section.settings.link_text %}

@@ -8,6 +8,12 @@
 {%- endcomment -%}
 <section class="container" style="text-align: {{ section.settings.alignment }};">
   <div class="rte__content">
+    {%- if section.settings.img != blank -%}
+      <div class="rte__image">
+        <img  src="{{ section.settings.img | img_url: '299x286' }}"
+            alt="{{ section.settings.img.alt | default: shop.name }}" />
+      </div>
+    {%- endif -%}
     {%- if section.settings.title != blank -%}
       <h2>{{ section.settings.title | escape }}</h2>
     {%- endif -%}
@@ -23,6 +29,11 @@
   {
     "name": "Rich text",
     "settings": [
+      {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Image"
+      },
       {
         "type": "text",
         "id": "title",

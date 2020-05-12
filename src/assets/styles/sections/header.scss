@@ -115,7 +115,7 @@
 	cursor: pointer;
 }
 #wheel {
-	position: fixed;
+	position: absolute;
 	z-index: 10;
 	width: calc(#{$header-height} - 12px);
 	height: calc(#{$header-height} - 12px);
@@ -142,8 +142,8 @@
 		transition-delay: .35s;
 	}
 	svg {
-		width: 62px;
-		height: 10px;
+		width: 36px;
+		height: 8px;
 		padding: 1.5px;
 		transition: all .2s linear;
 		opacity: 1;
@@ -166,7 +166,7 @@
 			transition-delay: .35s;
 		}
 		&:nth-child(4) {
-			transform: translateY(0px) rotate(0deg)  scaleY(1) scaleX(1);
+			transform: translateY(0px) rotate(0deg) scaleY(1) scaleX(1);
 			transition: all .2s linear;
 			transition-delay: .35s;
 		}
@@ -181,7 +181,7 @@
 	}
 	span {
 		border-radius: 4px;
-		padding: 2px 6px;
+		padding: 2px;
 	}
 }
 .nav-open {
@@ -196,7 +196,7 @@
 		svg {
 			opacity: .5;
 			&:nth-child(1) {
-				transform: translateY(10px) rotate(45deg) scaleY(.5) scaleX(1.2);
+				transform: translateY(8px) rotate(45deg) scaleY(.5) scaleX(1.2);
 				transition: transform .2s linear;
 			}
 			&:nth-child(2) {
@@ -208,7 +208,7 @@
 				transition-delay: 0s;
 			}
 			&:nth-child(4) {
-				transform: translateY(-10px) rotate(-45deg)  scaleY(.5) scaleX(1.2);
+				transform: translateY(-8px) rotate(-45deg)  scaleY(.5) scaleX(1.2);
 				transition: transform .2s linear;
 			}
 		}
@@ -280,18 +280,18 @@
 .template-index {
 	#cart-button {
 		span {
-			color: #FFF;
+			color: $color-main;
 		}
 		svg {
-			fill: #FFF;
+			fill: $color-main;
 			path {
-				fill: #FFF;
+				fill: $color-main;
 			}
 		}
 	}
 	#nav-bar {
 		&:after {
-			opacity: 0;
+			// opacity: 0;
 		}
 	}
 }
