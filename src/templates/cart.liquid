@@ -91,19 +91,26 @@
       </tbody>
     </table>
 
+    {% section 'delivery-date' %}
+
     {% if settings.cart_notes_enable %}
       <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
       <textarea name="note" id="CartSpecialInstructions" placeholder="{{ 'cart.general.note' | t }}">{{ cart.note }}</textarea>
     {% endif %}
-
-    <p class="font__co">{{ 'cart.general.subtotal' | t }}</p>
-    <p class="subtotal">{{ cart.total_price | money }}</p>
-    {% if cart.total_discounts > 0 %}
-      <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>
-    {% endif %}
-    <p>{{ 'cart.general.shipping_at_checkout' | t }}</p>
-    <input class="button button__white" type="submit" name="update" value="{{ 'cart.general.update' | t }}">
-    <input type="submit" name="checkout" class="button button__main" value="{{ 'cart.general.checkout' | t }}">
+  <div class="cart-next">
+    <div class="cart-totals">
+      <p class="font__co">{{ 'cart.general.subtotal' | t }}</p>
+      <p class="subtotal">{{ cart.total_price | money }}</p>
+      {% if cart.total_discounts > 0 %}
+        <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>
+      {% endif %}
+      <p class="shipping">{{ 'cart.general.shipping_at_checkout' | t }}</p>
+    </div>
+    <div class="cart-buttons">
+      <input class="button button__white" type="submit" name="update" value="{{ 'cart.general.update' | t }}">
+      <input type="submit" name="checkout" class="button button__main" value="{{ 'cart.general.checkout' | t }}">
+    </div>
+  </div>
   </form>
 {% else %}
   <h1>{{ 'cart.general.title' | t }}</h1>

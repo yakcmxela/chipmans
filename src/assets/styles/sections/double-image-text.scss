@@ -28,7 +28,12 @@
   }
   .button {
     position: relative;
+    background-color: $color-accent-dark;
     z-index: 2;
+    &:hover {
+      background-color: $color-accent;
+      color: #FFF
+    }
   }
   @include media-query($medium-down) {
     flex-direction: column-reverse !important;
